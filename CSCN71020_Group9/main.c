@@ -7,8 +7,8 @@
 void printWelcome() {
 	printf_s("\n");
 	printf_s(" **********************\n");
-	printf_s("**     Welcome to     **\n");
-	printf_s("**   Polygon Checker  **\n");
+	printf_s(" **    Welcome to    **\n");
+	printf_s(" **  Polygon Checker **\n");
 	printf_s(" **********************\n");
 }
 

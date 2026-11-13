@@ -19,10 +19,10 @@ char* analyzeTriangle(double side1, double side2, double side3) {
 		(side1 == side3 && side2 < (side1 + side3)) ||
 		(side2 == side3 && side1 < (side2 + side3))) 
 	{
-		result = "Isosceles triangle";
+		result = "Isosceles Triangle";
 	}
 	else if ((side1 + side2 > side3) && (side2 + side3 > side1) && (side3 + side1 > side2)) {
-		result = "Scalene triangle";
+		result = "Scalene Triangle";
 	}
 	else {
 		result = "Not a triangle";
