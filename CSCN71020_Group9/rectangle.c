@@ -4,6 +4,6 @@
 #include "rectangle.h"
 
 double pointsCoordinates() {
-
-	double
+	return (double)2.5;
+	//double
 }

@@ -20,9 +20,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c" />
-    <ClCompile Include="main.h" />
     <ClCompile Include="rectangle.c" />
     <ClCompile Include="triangleSolver.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rectangle.h" />
