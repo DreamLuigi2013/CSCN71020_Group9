@@ -21,9 +21,11 @@
   <ItemGroup>
     <ClCompile Include="main.c" />
     <ClCompile Include="main.h" />
+    <ClCompile Include="rectangle.c" />
     <ClCompile Include="triangleSolver.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="rectangle.h" />
     <ClInclude Include="triangleSolver.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
