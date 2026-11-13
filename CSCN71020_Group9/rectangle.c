@@ -3,7 +3,8 @@
 
 #include "rectangle.h"
 
-double pointsCoordinates() {
+double pointCoordinates(double* coordinates) {
 
-	double
+
+
 }
