@@ -3,19 +3,21 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <math.h>
+
 #include "triangleSolver.h"
 
-char* analyzeTriangle(int side1, int side2, int side3) {
+char* analyzeTriangle(double side1, double side2, double side3) {
 	char* result = "";
+
 	if (side1 <= 0 || side2 <= 0 || side3 <= 0) {
 		result = "Not a triangle";
 	}
 	else if (side1 == side2 && side1 == side3) {
-		result = "Equilateral triangle";
+		result = "Equilateral Triangle";
 	}
 	else if ((side1 == side2 && side3 < (side1 + side2)) ||
 		(side1 == side3 && side2 < (side1 + side3)) ||
-		(side2 == side3 && side1 < (side2 + side3)))
+		(side2 == side3 && side1 < (side2 + side3))) 
 	{
 		result = "Isosceles triangle";
 	}
@@ -29,8 +31,7 @@ char* analyzeTriangle(int side1, int side2, int side3) {
 	return result;
 }
 
-void AngleFinder(int side1, int side2, int side3)
-{
+void AngleFinder(double side1, double side2, double side3) {
 	
 	// cos(a) = (b^2 + c^2 - a^2)/2bc
 	// 180/pi = math to convert radians into angles

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-//#include "main.h"
+#include "main.h"
 #include "triangleSolver.h"
 
 void printWelcome() {
@@ -24,11 +24,10 @@ int printShapeMenu() {
 	return shapeChoice;
 }
 
-int* getTriangleSides(int* triangleSides) {
-	printf_s("Enter the three sides of the triangle: ");
-
+double* getTriangleSides(double* triangleSides) {
 	for (int i = 0; i < 3; i++) {
-		scanf_s("%d", &triangleSides[i]);
+		printf_s("Enter the length of the triangle\'s side %d: ", i + 1);
+		scanf_s("%lf", &triangleSides[i]);
 	}
 	return triangleSides;
 }
@@ -45,10 +44,10 @@ int main() {
 
 		switch (shapeChoice) {
 			case 1:
-				printf_s("Triangle selected.\n");
+				printf_s("Triangle selected.\n\n");
 
-				int triangleSides[3] = { 0, 0, 0 };
-				int* triangleSidesPtr = getTriangleSides(triangleSides);
+				double triangleSides[3] = { 0, 0, 0 };
+				double* triangleSidesPtr = getTriangleSides(triangleSides);
 
 				//printf_s("! %d\n", triangleSidesPtr[0]);
 
