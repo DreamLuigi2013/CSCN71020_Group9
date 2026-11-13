@@ -13,10 +13,11 @@ void printWelcome() {
 }
 
 int printShapeMenu() {
+	int shapeChoice;
+
+	printf_s("Shape Menu:\n");
 	printf_s("1. Triangle\n");
 	printf_s("0. Exit\n");
-
-	int shapeChoice;
 
 	printf_s("Enter number: ");
 	scanf_s("%1o", &shapeChoice);
