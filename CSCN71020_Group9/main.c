@@ -6,12 +6,11 @@
 
 void printWelcome() {
 	printf_s("\n");
-	printf_s(" **********************\n");
-	printf_s(" **    Welcome to    **\n");
-	printf_s(" **  Polygon Checker **\n");
-	printf_s(" **********************\n");
+	printf_s("    /\\   Triangle Solver Active\n");
+	printf_s("   /  \\  Ready to calculate!\n");
+	printf_s("  /____\\\n");
+	printf_s("\n");
 }
-
 int printShapeMenu() {
 	int shapeChoice;
 
