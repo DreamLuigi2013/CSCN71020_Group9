@@ -6,15 +6,16 @@
 
 void printWelcome() {
 	printf_s("\n");
-	printf_s("    /\\   Triangle Solver Active\n");
-	printf_s("   /  \\  Ready to calculate!\n");
-	printf_s("  /____\\\n");
+	printf_s("\t\t\t\t\t__________                            /\\\n");
+	printf_s("\t\t\t\t\t|        |        Welcome to         /  \\\n");
+	printf_s("\t\t\t\t\t|________|   The Polygon Checker!   /____\\\n");
 	printf_s("\n");
 }
 int printShapeMenu() {
 	int shapeChoice;
 
 	printf_s("Shape Menu:\n");
+	printf_s("1. Triangle\n");
 	printf_s("1. Triangle\n");
 	printf_s("0. Exit\n");
 
@@ -55,9 +56,8 @@ int main() {
 
 				printf_s("%s\n", result);
 				break;
-
 			case 2:
-				printf("Quatralateral Selected.\n");
+				printf_s("Quatralateral Selected.\n");
 
 				double x1 = 0, x2 = 0, x3 = 0, x4 = 0;
 				double y1 = 0, y2 = 0, y3 = 0, y4 = 0;
@@ -69,10 +69,7 @@ int main() {
 						{x3, y3},
 						{x4, y4}
 					};
-
-
-				
-
+				break;
 			case 0:
 				continueProgram = false;
 				break;
