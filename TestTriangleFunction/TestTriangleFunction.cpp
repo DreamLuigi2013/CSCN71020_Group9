@@ -3,7 +3,7 @@
 #include <cstring>
 
 extern "C" {
-#include "C:\Users\sumis\source\repos\CSCN71020_Group9\CSCN71020_Group9/triangleSolver.h"
+#include "..\CSCN71020_Group9/triangleSolver.h"
 }
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
