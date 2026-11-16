@@ -3,6 +3,7 @@
 
 #include "main.h"
 #include "triangleSolver.h"
+#include "C:\Users\reisl\source\repos\CSCN71020_Group9_3\CSCN71020_Group9\rectangle.h"
 
 void printWelcome() {
 	printf_s("\n");
@@ -70,6 +71,9 @@ int main() {
 						{x3, y3},
 						{x4, y4}
 					};
+
+				pointsCoordinates(coordinates);
+
 				break;
 			case 0:
 				continueProgram = false;

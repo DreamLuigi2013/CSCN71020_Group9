@@ -1,3 +1,2 @@
 #pragma once
-
-double pointsCoordinates(double* coordinates);
+void pointsCoordinates(double* coordinates);
