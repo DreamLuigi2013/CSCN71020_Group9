@@ -3,7 +3,7 @@
 
 #include "main.h"
 #include "triangleSolver.h"
-#include "C:\Users\reisl\source\repos\CSCN71020_Group9_3\CSCN71020_Group9\rectangle.h"
+#include "rectangle.h"
 
 void printWelcome() {
 	printf_s("\n");
