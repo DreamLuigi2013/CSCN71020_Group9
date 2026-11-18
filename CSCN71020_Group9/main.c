@@ -5,78 +5,104 @@
 #include "triangleSolver.h"
 #include "rectangle.h"
 
-void printWelcome() {
-	printf_s("\n");
-	printf_s("\t\t\t\t\t__________                            /\\\n");
-	printf_s("\t\t\t\t\t|        |        Welcome to         /  \\\n");
-	printf_s("\t\t\t\t\t|________|   The Polygon Checker!   /____\\\n");
-	printf_s("\n");
-}
-int printShapeMenu() {
-	int shapeChoice;
+#define MIN_TRIANGLE_SIDE_LENGTH 0
+#define MAX_TRIANGLE_SIDE_LENGTH 100000
 
-	printf_s("Shape Menu:\n");
-	printf_s("0. Exit\n");
-	printf_s("1. Triangle\n");
-	printf_s("2. Rectangle\n"); // Will change to quadrilateral later
+// =========================================== TRIANGLE ===========================================
+void getTriangleSideInput(double* out) {
+	double value = 0.0;
+	bool valid;
+	int scanf_val;
 
-	printf_s("Enter number: ");
-	scanf_s("%1d", &shapeChoice);
+	do {
+		valid = false;
+		scanf_val = scanf_s("%lf", &value);
 
-	return shapeChoice;
+		if (scanf_val == 0) {
+			printf("Error, input invalid\n");
+		}
+
+		valid = true;
+	} while (!valid);
+
+	*out = value;
 }
 
 double* getTriangleSides(double* triangleSides) {
+	printf_s("Enter triangle lengths:\n");
+
 	for (int i = 0; i < 3; i++) {
-		printf_s("Enter the length of the triangle\'s side %d: ", i + 1);
-		scanf_s("%lf", &triangleSides[i]);
+		printf_s("Side %d: ", i + 1);
+
+		getTriangleSideInput(&triangleSides[i]);
 	}
 	return triangleSides;
 }
 
-int side = 0;
+// ============================================= MENU =============================================
+void exitMenuAction(bool* continueProgram) {
+	*continueProgram = false;
+}
 
+void triangleMenuAction() {
+	printf_s("Triangle selected.\n\n");
+
+	double triangleSidesArr[3] = { 0, 0, 0 };
+	double* triangleSides = getTriangleSides(triangleSidesArr);
+
+	char* result = analyzeTriangle(triangleSides[0], triangleSides[1], triangleSides[2]);
+
+	printf_s("%s\n", result);
+}
+
+void quadrilateralMenuAction() {
+	printf_s("Quatralateral Selected.\n");
+
+	double coordinates[4][2] =
+	{
+		{ 0, 0 },
+		{ 0, 0 },
+		{ 0, 0 },
+		{ 0, 0 }
+	};
+
+	// Add quadrilateral input function
+
+	pointsCoordinates(coordinates);
+}
+
+// ============================================= MAIN =============================================
 int main() {
 	bool continueProgram = true;
+	int side = 0;
+	int shapeChoice;
 	
 	while (continueProgram) {
-		printWelcome();
+		printf_s("\n");
+		printf_s("\t\t\t\t\t__________                            /\\\n");
+		printf_s("\t\t\t\t\t|        |        Welcome to         /  \\\n");
+		printf_s("\t\t\t\t\t|________|   The Polygon Checker!   /____\\\n");
+		printf_s("\n");
 
-		int shapeChoice = printShapeMenu();
+		shapeChoice = -1;
+
+		printf_s("Shape Menu:\n");
+		printf_s("0. Exit\n");
+		printf_s("1. Triangle\n");
+		printf_s("2. Rectangle\n"); // Will change to quadrilateral later
+
+		printf_s("Enter number: ");
+		scanf_s("%1d", &shapeChoice);
 
 		switch (shapeChoice) {
+			case 0:
+				exitMenuAction(&continueProgram);
+				break;
 			case 1:
-				printf_s("Triangle selected.\n\n");
-
-				double triangleSides[3] = { 0, 0, 0 };
-				double* triangleSidesPtr = getTriangleSides(triangleSides);
-
-				//printf_s("! %d\n", triangleSidesPtr[0]);
-
-				char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
-
-				printf_s("%s\n", result);
+				triangleMenuAction();
 				break;
 			case 2:
-				printf_s("Quatralateral Selected.\n");
-				// Add quadrilateral input function
-
-				double x1 = 0, x2 = 0, x3 = 0, x4 = 0;
-				double y1 = 0, y2 = 0, y3 = 0, y4 = 0;
-
-				double coordinates[4][2] = 
-					{ 
-						{x1, y1},
-						{x2, y2},
-						{x3, y3},
-						{x4, y4}
-					};
-
-				pointsCoordinates(coordinates);
-
-				break;
-			case 0:
-				continueProgram = false;
+				quadrilateralMenuAction();
 				break;
 			default:
 				printf_s("Invalid value entered.\n");
@@ -84,5 +110,6 @@ int main() {
 		}
 	}
 
+	printf("\n\n");
 	return 0;
 }
