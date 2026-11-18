@@ -21,6 +21,8 @@
   <ItemGroup>
     <ClCompile Include="main.c" />
     <ClCompile Include="rectangle.c" />
+    <ClCompile Include="rectangleSolver.c" />
+    <ClCompile Include="triangle.c" />
     <ClCompile Include="triangleSolver.c" />
   </ItemGroup>
   <ItemGroup>
@@ -28,6 +30,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rectangle.h" />
+    <ClInclude Include="rectangleSolver.h" />
+    <ClInclude Include="triangle.h" />
     <ClInclude Include="triangleSolver.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
