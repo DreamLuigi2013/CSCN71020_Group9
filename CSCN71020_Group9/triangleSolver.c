@@ -33,16 +33,21 @@ char* analyzeTriangle(double side1, double side2, double side3) {
 
 void AngleFinder(double side1, double side2, double side3) {
 	
-	// cos(a) = (b^2 + c^2 - a^2)/2bc
+	// c^2 = a^2 + b^2 - 2ab*cos(C)
+	// cos(C) = (c^2 - (a^2 + b^2))/(-2ab)
+	
+	// 
+	// A = arccos(  )
+
 	// 180/pi = math to convert radians into angles
 
-	double Angle1 = acos((side2 * side2 + side3 * side3 - side1 * side1) / (2.0 * side2 * side3)) * (180.0 / M_PI);
-	double Angle2 = acos((side1 * side1 + side3 * side3 - side2 * side2) / (2.0 * side1 * side3)) * (180.0 / M_PI);
-	double Angle3 = 180.0 - Angle1 - Angle2;
+	double angle1 = acos((side2 * side2 + side3 * side3 - side1 * side1) / (2.0 * side2 * side3)) * (180.0 / M_PI);
+	double angle2 = acos((side1 * side1 + side3 * side3 - side2 * side2) / (2.0 * side1 * side3)) * (180.0 / M_PI);
+	double angle3 = 180.0 - angle1 - angle2;
 
-	// Prints angles matching to side lengths
-	printf("This is the angle of the first side %.2lf", Angle1);
-	printf("This is the angle of the second side %.2lf", Angle2);
-	printf("This is the angle of the third side %.2lf", Angle3);
+	//// Prints angles matching to side lengths
+	//printf("This is the angle of the first side %.2lf", Angle1);
+	//printf("This is the angle of the second side %.2lf", Angle2);
+	//printf("This is the angle of the third side %.2lf", Angle3);
 
 }
