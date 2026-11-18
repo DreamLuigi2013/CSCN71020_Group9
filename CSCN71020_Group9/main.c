@@ -9,7 +9,40 @@
 #include "rectangle.h"
 #include "rectangleSolver.h"
 
-// ============================================= MENU =============================================
+// ====================================== DISPLAY FUNCTIONS =======================================
+void printWelcome() {
+	printf_s("\n");
+	printf_s("\t\t\t\t\t__________                            /\\\n");
+	printf_s("\t\t\t\t\t|        |        Welcome to         /  \\\n");
+	printf_s("\t\t\t\t\t|________|   The Polygon Checker!   /____\\\n");
+	printf_s("\n");
+}
+
+// ===================== MENU INPUT GATHERING AND DISPLAY =====================
+int printShapeMenu() {
+	int shapeChoice = -1;
+
+	printf_s("Shape Menu:\n");
+	printf_s("0. Exit\n");
+	printf_s("1. Triangle\n");
+	printf_s("2. Rectangle\n"); // Will change to quadrilateral later
+
+	printf_s("Enter number: ");
+	scanf_s("%1d", &shapeChoice);
+
+	return shapeChoice;
+}
+
+// ========================== TRIANGLE ANGLE DISPLAY ==========================
+void printTriangleAngles(double* angles) {
+	printf("\nThe angles of the inputted triangle:\n");
+
+	printf("Angle 1: %lf\n", angles[0]);
+	printf("Angle 2: %lf\n", angles[1]);
+	printf("Angle 3: %lf\n", angles[2]);
+}
+
+// ===================================== MENU DEPENDANT LOGIC =====================================
 void exitMenuAction(bool* continueProgram) {
 	*continueProgram = false;
 }
@@ -19,10 +52,13 @@ void triangleMenuAction() {
 
 	double triangleSidesArr[3] = { 0, 0, 0 };
 	double* triangleSides = getTriangleSides(triangleSidesArr);
+	double* triangleAngles = triangleAngleFinder(triangleSides[0], triangleSides[1], triangleSides[2]);
 
-	char* result = analyzeTriangle(triangleSides[0], triangleSides[1], triangleSides[2]);
+	char* triangleSidesResult = analyzeTriangle(triangleSides[0], triangleSides[1], triangleSides[2]);
 
-	printf_s("%s\n", result);
+	printf_s("%s\n", triangleSidesResult);
+
+	printTriangleAngles(triangleAngles);
 }
 
 void quadrilateralMenuAction() {
@@ -48,21 +84,9 @@ int main() {
 	int shapeChoice;
 	
 	while (continueProgram) {
-		printf_s("\n");
-		printf_s("\t\t\t\t\t__________                            /\\\n");
-		printf_s("\t\t\t\t\t|        |        Welcome to         /  \\\n");
-		printf_s("\t\t\t\t\t|________|   The Polygon Checker!   /____\\\n");
-		printf_s("\n");
+		printWelcome();
 
-		shapeChoice = -1;
-
-		printf_s("Shape Menu:\n");
-		printf_s("0. Exit\n");
-		printf_s("1. Triangle\n");
-		printf_s("2. Rectangle\n"); // Will change to quadrilateral later
-
-		printf_s("Enter number: ");
-		scanf_s("%1d", &shapeChoice);
+		shapeChoice = printShapeMenu();
 
 		switch (shapeChoice) {
 			case 0:

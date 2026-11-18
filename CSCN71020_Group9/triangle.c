@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-#define MIN_TRIANGLE_SIDE_LENGTH 0
-#define MAX_TRIANGLE_SIDE_LENGTH 100000
+#include "triangle.h"
+
+#define MIN_SIDE_LENGTH 0
+#define MAX_SIDE_LENGTH 100000
 
 void getTriangleSideInput(double* out) {
 	double value = 0.0;
