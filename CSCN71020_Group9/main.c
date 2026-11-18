@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
 
 #include "main.h"
 
@@ -52,13 +53,15 @@ void triangleMenuAction() {
 
 	double triangleSidesArr[3] = { 0, 0, 0 };
 	double* triangleSides = getTriangleSides(triangleSidesArr);
-	double* triangleAngles = triangleAngleFinder(triangleSides[0], triangleSides[1], triangleSides[2]);
 
 	char* triangleSidesResult = analyzeTriangle(triangleSides[0], triangleSides[1], triangleSides[2]);
 
 	printf_s("%s\n", triangleSidesResult);
 
-	printTriangleAngles(triangleAngles);
+	if (!(strcmp(triangleSidesResult, "Not a triangle") == 0)) {
+		double* triangleAngles = triangleAngleFinder(triangleSides[0], triangleSides[1], triangleSides[2]);
+		printTriangleAngles(triangleAngles);
+	}
 }
 
 void quadrilateralMenuAction() {
