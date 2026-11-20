@@ -4,7 +4,7 @@
 extern "C" {
 #endif
 
-void pointsCoordinates(double* coordinates);
+double* pointsCoordinates(double* points);
 
 #ifdef __cplusplus
 }

@@ -99,17 +99,29 @@ void triangleMenuAction() {
 void quadrilateralMenuAction() {
 	printf_s("Quadrilateral Selected.\n\n");
 
-	double coordinates[4][2] =
+	double rectanglePointsArr[4][2] =
 	{
 		{ 0, 0 },
 		{ 0, 0 },
 		{ 0, 0 },
 		{ 0, 0 }
+	
 	};
 
-	// Add quadrilateral input function
+	double* rectanglePoints = pointsCoordinates(rectanglePointsArr);
 
-	pointsCoordinates(coordinates);
+
+	// TEMP ======================
+	// Displays the filled rectangle point array
+	int X = 0;
+	int Y = 1;
+
+	printf("\n{\n");
+	for (int point = 0; point < 4; point++) {
+		printf("    {%.2lf, %.2lf}%s\n", rectanglePoints[point * 2 + X], rectanglePoints[point * 2 + Y], (point != 3) ? ", " : "");
+	}
+	printf("}\n");
+	// TEMP ======================
 }
 
 // ============================================= MAIN =============================================

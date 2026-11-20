@@ -3,7 +3,7 @@
 
 #include "rectangle.h"
 
-void pointsCoordinates(double* coordinates) {
+double* pointsCoordinates(double* points) {
 	double point = 0;
 	int check;
 
@@ -19,7 +19,7 @@ void pointsCoordinates(double* coordinates) {
 
 					while ((check = getchar()) != '\n' && check != EOF);
 				}
-				*(coordinates +(i * 2) + j) = point;
+				*(points + (i * 2) + j) = point;
 			}
 			else {
 				printf("Please enter your y coordinate for point %d: ", i + 1);
@@ -31,9 +31,10 @@ void pointsCoordinates(double* coordinates) {
 
 					while ((check = getchar()) != '\n' && check != EOF);
 				}
-				*(coordinates + (i * 2) + j) = point;
+				*(points + (i * 2) + j) = point;
 			}
 		}
 	}
-	
+
+	return points;
 }
