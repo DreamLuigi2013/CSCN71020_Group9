@@ -39,6 +39,7 @@ bool isARectangle(double* rectangleTriangleSideLengths) {
 	double s2;
 	double s3;
 	double hypo;
+	bool isRectangle = false;
 
 	for (int tri = 0; tri < 2; tri++) {
 		s1 = rectangleTriangleSideLengths[tri * 3 + SIDE_LEN_1];
@@ -49,5 +50,5 @@ bool isARectangle(double* rectangleTriangleSideLengths) {
 
 	}
 
-
+	return isRectangle;
 }
