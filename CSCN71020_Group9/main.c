@@ -88,16 +88,16 @@ void triangleMenuAction() {
 	printf_s("%s\n", triangleSidesResult);
 
 	if (strcmp(triangleSidesResult, "Not a triangle") != 0) {
-		double anglesArr[3] = { 0,0,0 };
-		double* angles = anglesArr;
+		double triangleAnglesArr[3] = { 0,0,0 };
+		double* triangleAngles = triangleAnglesArr;
 
-		triangleAngleFinder(triangleSides[0], triangleSides[1], triangleSides[2], angles);
-		printTriangleAngles(angles);
+		triangleAngleFinder(triangleSides[0], triangleSides[1], triangleSides[2], triangleAngles);
+		printTriangleAngles(triangleAngles);
 	}
 }
 
 void quadrilateralMenuAction() {
-	printf_s("Quatralateral Selected.\n\n");
+	printf_s("Quadrilateral Selected.\n\n");
 
 	double coordinates[4][2] =
 	{
