@@ -4,7 +4,7 @@
 extern "C" {
 #endif
 
-void getTriangleSideInput(double* out);
+void getTriangleSideInput(double* out, int side_num);
 double* getTriangleSides(double* triangleSides);
 
 #ifdef __cplusplus

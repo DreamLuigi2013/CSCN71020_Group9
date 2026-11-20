@@ -5,7 +5,11 @@ extern "C" {
 #endif
 
 void printWelcome();
-int printShapeMenu();
+
+void printShapeMenu();
+int* getShapeMenuInput();
+
+void printTriangleAngles(double* angles);
 
 void exitMenuAction(bool* continueProgram);
 void triangleMenuAction();

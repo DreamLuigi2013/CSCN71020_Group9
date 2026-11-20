@@ -10,6 +10,9 @@
 #include "rectangle.h"
 #include "rectangleSolver.h"
 
+#define MIN_SHAPE_MENU_VALUE 0
+#define MAX_SHAPE_MENU_VALUE 2
+
 // ====================================== DISPLAY FUNCTIONS =======================================
 void printWelcome() {
 	printf_s("\n");
@@ -20,19 +23,45 @@ void printWelcome() {
 }
 
 // ===================== MENU INPUT GATHERING AND DISPLAY =====================
-int printShapeMenu() {
-	int shapeChoice = -1;
-
+void printShapeMenu() {
 	printf_s("Shape Menu:\n");
 	printf_s("0. Exit\n");
 	printf_s("1. Triangle\n");
 	printf_s("2. Rectangle\n"); // Will change to quadrilateral later
-
-	printf_s("Enter number: ");
-	scanf_s("%1d", &shapeChoice);
-
-	return shapeChoice;
 }
+
+int* getShapeMenuInput() {
+	int menuChoice = -1;
+	bool valid;
+	int scanfValue;
+	char invalidChar;
+
+	do {
+		valid = false;
+
+		printf_s("Enter a number: ");
+		scanfValue = scanf_s("%d", &menuChoice);
+
+		if (scanfValue == 0) {
+			printf("Error, input invalid. Input must be an integer.\n\n");
+
+			while ((invalidChar = getchar()) != '\n' && invalidChar != EOF);
+			continue;
+		}
+
+		if (MIN_SHAPE_MENU_VALUE > menuChoice || menuChoice > MAX_SHAPE_MENU_VALUE) {
+			printf("Error, input must be between %d and %d.\n\n", MIN_SHAPE_MENU_VALUE, MAX_SHAPE_MENU_VALUE);
+
+			menuChoice = -1;
+			continue;
+		}
+
+		valid = true;
+	} while (!valid);
+
+	return (int*) &menuChoice;
+}
+
 
 // ========================== TRIANGLE ANGLE DISPLAY ==========================
 void printTriangleAngles(double* angles) {
@@ -58,14 +87,17 @@ void triangleMenuAction() {
 
 	printf_s("%s\n", triangleSidesResult);
 
-	if (!(strcmp(triangleSidesResult, "Not a triangle") == 0)) {
-		double* triangleAngles = triangleAngleFinder(triangleSides[0], triangleSides[1], triangleSides[2]);
-		printTriangleAngles(triangleAngles);
+	if (strcmp(triangleSidesResult, "Not a triangle") != 0) {
+		double anglesArr[3] = { 0,0,0 };
+		double* angles = anglesArr;
+
+		triangleAngleFinder(triangleSides[0], triangleSides[1], triangleSides[2], angles);
+		printTriangleAngles(angles);
 	}
 }
 
 void quadrilateralMenuAction() {
-	printf_s("Quatralateral Selected.\n");
+	printf_s("Quatralateral Selected.\n\n");
 
 	double coordinates[4][2] =
 	{
@@ -83,13 +115,15 @@ void quadrilateralMenuAction() {
 // ============================================= MAIN =============================================
 int main() {
 	bool continueProgram = true;
-	int side = 0;
+	int* shapeChoicePtr;
 	int shapeChoice;
 	
 	while (continueProgram) {
 		printWelcome();
 
-		shapeChoice = printShapeMenu();
+		printShapeMenu();
+		shapeChoicePtr = getShapeMenuInput();
+		shapeChoice = *shapeChoicePtr;
 
 		switch (shapeChoice) {
 			case 0:

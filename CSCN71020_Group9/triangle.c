@@ -9,24 +9,24 @@
 void getTriangleSideInput(double* out, int side_num) {
 	double side = 0.0;
 	bool valid;
-	int scanf_val;
-	char invalid_ch;
+	int scanfValue;
+	char invalidChar;
 
 	do {
 		valid = false;
 
 		printf_s("Side %d: ", side_num);
-		scanf_val = scanf_s("%lf", &side);
+		scanfValue = scanf_s("%lf", &side);
 
-		if (scanf_val == 0) {
+		if (scanfValue == 0) {
 			printf("Error, input invalid. Input must be a decimal number.\n\n");
 
-			while ((invalid_ch = getchar()) != '\n' && invalid_ch != EOF);
+			while ((invalidChar = getchar()) != '\n' && invalidChar != EOF);
 			continue;
 		}
 
-		if (MIN_SIDE_LENGTH > side || side > MAX_SIDE_LENGTH) {
-			printf("Error, input must be between %.0lf and %.0lf.\n\n", MIN_SIDE_LENGTH, MAX_SIDE_LENGTH);
+		if (MIN_SIDE_LENGTH >= side || side > MAX_SIDE_LENGTH) {
+			printf("Error, input must be between %.0lf(not including) and %.0lf.\n\n", MIN_SIDE_LENGTH, MAX_SIDE_LENGTH);
 
 			side = 0.0;
 			continue;

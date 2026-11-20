@@ -31,10 +31,15 @@ char* analyzeTriangle(double side1, double side2, double side3) {
 	return result;
 }
 
-double* triangleAngleFinder(double side1, double side2, double side3) {
-	// Make empty arrray for the angles
-	double anglesArr[3] = { 0,0,0 };
+double convertToDegrees(double rad) {
+	return rad * (180.0 / M_PI);
+}
 
+double convertToRadians(double deg) {
+	return deg * (M_PI / 180.0);
+}
+
+void triangleAngleFinder(double side1, double side2, double side3, double* angles) {
 	// c^2 = a^2 + b^2 - 2ab*cos(C)
 	// C = arccos( (a^2 + b^2 - c^2) / (2ab) )
 
@@ -44,20 +49,8 @@ double* triangleAngleFinder(double side1, double side2, double side3) {
 	// b^2 = a^2 + c^2 - 2ac*cos(B)
 	// B = arccos( (a^2 + c^2 - b^2) / (2ac) )
 
-	// 180/pi = math to convert radians into angles
-	double angle1 = acos((side2 * side2 + side3 * side3 - side1 * side1) / (2.0 * side2 * side3)) * (180.0 / M_PI);
-	double angle2 = acos((side1 * side1 + side3 * side3 - side2 * side2) / (2.0 * side1 * side3)) * (180.0 / M_PI);
-	double angle3 = 180.0 - angle1 - angle2;
-
-	// Set angles to the memory address of the angles array
-	double* angles = anglesArr;
-	
-	// Fill the "array"
-	angles[0] = angle1;
-	angles[1] = angle2;
-	angles[2] = angle3;
-	
-	// Return the memory address so it can still be use
-	// and persists after function call
-	return angles;
+	// 180/pi = math to convert radians into degrees
+	angles[0] = convertToDegrees(acos((side2 * side2 + side3 * side3 - side1 * side1) / (2.0 * side2 * side3)));
+	angles[1] = convertToDegrees(acos((side1 * side1 + side3 * side3 - side2 * side2) / (2.0 * side1 * side3)));
+	angles[2] = 180.0 - angles[0] - angles[1];
 }
