@@ -38,18 +38,50 @@ namespace TriangleSolverUnitTests
             Assert::AreEqual(0, strcmp(result, "Scalene Triangle"));
         }
 
-        TEST_METHOD(TestInvalidNegativeSide)
+        TEST_METHOD(TestInvalidNegativeSide1)
         {
             // Negative side lengths shouldn't work as a triangle
             char* result = analyzeTriangle(-3.0, 4.0, 5.0);
             Assert::IsNotNull(result);
             Assert::AreEqual(0, strcmp(result, "Not a triangle"));
         }
+        
+        TEST_METHOD(TestInvalidNegativeSide2)
+        {
+            // Negative side lengths shouldn't work as a triangle
+            char* result = analyzeTriangle(3.0, -4.0, 5.0);
+            Assert::IsNotNull(result);
+            Assert::AreEqual(0, strcmp(result, "Not a triangle"));
+        }
+        
+        TEST_METHOD(TestInvalidNegativeSide3)
+        {
+            // Negative side lengths shouldn't work as a triangle
+            char* result = analyzeTriangle(-3.0, 4.0, -5.0);
+            Assert::IsNotNull(result);
+            Assert::AreEqual(0, strcmp(result, "Not a triangle"));
+        }
 
-        TEST_METHOD(TestInvalidZeroSide)
+        TEST_METHOD(TestInvalidZeroSide1)
         {
             // Side length of zero should be invalid
             char* result = analyzeTriangle(0.0, 4.0, 5.0);
+            Assert::IsNotNull(result);
+            Assert::AreEqual(0, strcmp(result, "Not a triangle"));
+        }
+        
+        TEST_METHOD(TestInvalidZeroSide2)
+        {
+            // Side length of zero should be invalid
+            char* result = analyzeTriangle(3.0, 0.0, 5.0);
+            Assert::IsNotNull(result);
+            Assert::AreEqual(0, strcmp(result, "Not a triangle"));
+        }
+        
+        TEST_METHOD(TestInvalidZeroSide3)
+        {
+            // Side length of zero should be invalid
+            char* result = analyzeTriangle(3.0, 4.0, 0.0);
             Assert::IsNotNull(result);
             Assert::AreEqual(0, strcmp(result, "Not a triangle"));
         }
