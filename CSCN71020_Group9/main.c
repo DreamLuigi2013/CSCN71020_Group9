@@ -105,7 +105,6 @@ void quadrilateralMenuAction() {
 		{ 0, 0 },
 		{ 0, 0 },
 		{ 0, 0 }
-	
 	};
 
 	double* rectanglePoints = pointsCoordinates(rectanglePointsArr);

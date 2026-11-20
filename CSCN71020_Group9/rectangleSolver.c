@@ -5,3 +5,7 @@
 #include <math.h>
 
 #include "rectangleSolver.h"
+
+double* findTriangleLengthsFromRectanglePoints(double* points);
+
+bool isRectangle(double* rectangleTriangleSideLengths);

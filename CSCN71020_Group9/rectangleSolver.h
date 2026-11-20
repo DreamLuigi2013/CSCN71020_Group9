@@ -4,7 +4,8 @@
 extern "C" {
 #endif
 
-	// Functions
+double* findTriangleLengthsFromRectanglePoints(double* points);
+bool isRectangle(double* rectangleTriangleSideLengths);
 
 #ifdef __cplusplus
 }
