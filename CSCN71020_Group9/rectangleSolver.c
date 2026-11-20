@@ -21,6 +21,19 @@ double* findTriangleLengthsFromRectanglePoints(double* points) {
 	return triangleSideLengths;
 }
 
+double findHypotenuse(double s1, double s2, double s3) {
+	double sidesArr[3] = {s1, s2, s3};
+	double* sides;
+
+	double max = sides[0];
+	
+	for (int i = 0; i < 3; i++) {
+		if (max < sides[i]) max = sides[i];
+	}
+
+	return max;
+}
+
 bool isARectangle(double* rectangleTriangleSideLengths) {
 	double s1;
 	double s2;
@@ -32,12 +45,7 @@ bool isARectangle(double* rectangleTriangleSideLengths) {
 		s2 = rectangleTriangleSideLengths[tri * 3 + SIDE_LEN_2];
 		s3 = rectangleTriangleSideLengths[tri * 3 + SIDE_LEN_3];
 
-		if (s3 < s1 && s2 < s1) {
-			hypo = s1;
-		}
-		else if (s3 < s2 && s1 < s2) {
-			hypo = s2;
-		}
+		hypo = findHypotenuse(s1, s2, s3);
 
 	}
 
