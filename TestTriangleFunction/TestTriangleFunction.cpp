@@ -22,10 +22,24 @@ namespace TriangleSolverUnitTests
             Assert::AreEqual(0, strcmp(result, "Equilateral Triangle"));
         }
 
-        TEST_METHOD(TestIsoscelesTriangle)
+        TEST_METHOD(TestIsoscelesTriangleSide3)
         {
             // Check that 2 equal sides and 1 different return isosceles
             char* result = analyzeTriangle(5.0, 5.0, 3.0);
+            Assert::IsNotNull(result);
+            Assert::AreEqual(0, strcmp(result, "Isosceles Triangle"));
+        }
+        TEST_METHOD(TestIsoscelesTriangleSide2)
+        {
+            // Check that 2 equal sides and 1 different return isosceles
+            char* result = analyzeTriangle(5.0, 3.0, 5.0);
+            Assert::IsNotNull(result);
+            Assert::AreEqual(0, strcmp(result, "Isosceles Triangle"));
+        }
+        TEST_METHOD(TestIsoscelesTriangleSide1)
+        {
+            // Check that 2 equal sides and 1 different return isosceles
+            char* result = analyzeTriangle(3.0, 5.0, 5.0);
             Assert::IsNotNull(result);
             Assert::AreEqual(0, strcmp(result, "Isosceles Triangle"));
         }
@@ -57,7 +71,7 @@ namespace TriangleSolverUnitTests
         TEST_METHOD(TestInvalidNegativeSide3)
         {
             // Negative side lengths shouldn't work as a triangle
-            char* result = analyzeTriangle(-3.0, 4.0, -5.0);
+            char* result = analyzeTriangle(3.0, 4.0, -5.0);
             Assert::IsNotNull(result);
             Assert::AreEqual(0, strcmp(result, "Not a triangle"));
         }
@@ -86,10 +100,24 @@ namespace TriangleSolverUnitTests
             Assert::AreEqual(0, strcmp(result, "Not a triangle"));
         }
 
-        TEST_METHOD(TestInvalidTriangleInequality)
+        TEST_METHOD(TestInvalidTriangleInequalitySide3)
         {
             // Tests the rule where sum of two sides must be greater than the third
             char* result = analyzeTriangle(1.0, 2.0, 10.0);
+            Assert::IsNotNull(result);
+            Assert::AreEqual(0, strcmp(result, "Not a triangle"));
+        }
+        TEST_METHOD(TestInvalidTriangleInequalitySide1)
+        {
+            // Tests the rule where sum of two sides must be greater than the third
+            char* result = analyzeTriangle(10.0, 1.0, 2.0);
+            Assert::IsNotNull(result);
+            Assert::AreEqual(0, strcmp(result, "Not a triangle"));
+        }
+        TEST_METHOD(TestInvalidTriangleInequalitySide2)
+        {
+            // Tests the rule where sum of two sides must be greater than the third
+            char* result = analyzeTriangle(1.0, 10.0, 2.0);
             Assert::IsNotNull(result);
             Assert::AreEqual(0, strcmp(result, "Not a triangle"));
         }
