@@ -23,7 +23,7 @@ double* findTriangleLengthsFromRectanglePoints(double* points) {
 
 double findHypotenuse(double s1, double s2, double s3) {
 	double sidesArr[3] = {s1, s2, s3};
-	double* sides;
+	double* sides = sidesArr;
 
 	double max = sides[0];
 	
