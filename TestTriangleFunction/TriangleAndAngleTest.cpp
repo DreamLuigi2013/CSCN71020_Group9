@@ -33,7 +33,7 @@ namespace TestTriangleFunction
 
         TEST_METHOD(TestIsoscelesTriangleSide2)
         {
-            // Sides one and three match and side two is different
+            // Sides one and three match and side two is different.
             char* result = analyzeTriangle(5.0, 3.0, 5.0);
             Assert::IsNotNull(result);
             Assert::AreEqual(0, strcmp(result, "Isosceles Triangle"));
