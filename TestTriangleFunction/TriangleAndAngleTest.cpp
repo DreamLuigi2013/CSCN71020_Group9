@@ -254,11 +254,37 @@ namespace TestTriangleFunction
             Assert::AreEqual(180.0, angles[0] + angles[1] + angles[2], 0.01);
          }
 
-        TEST_METHOD(TestInvalidInequalityAngles)
+        TEST_METHOD(TestInvalidInequalityAnglesSide3)
         {
             // Sides 1, 2, and 10 cannot make a valid triangle
             double angles[3] = { 0.0, 0.0, 0.0 };
             triangleAngleFinder(1.0, 2.0, 10.0, angles);
+            Assert::IsTrue(
+                std::isnan(angles[0]) ||
+                std::isnan(angles[1]) ||
+                std::isnan(angles[2]) ||
+                std::abs((angles[0] + angles[1] + angles[2]) - 180.0) > 0.01
+            );
+        }
+
+        TEST_METHOD(TestInvalidInequalityAnglesSide1)
+        {
+            // Sides 10, 2, and 1 cannot make a valid triangle
+            double angles[3] = { 0.0, 0.0, 0.0 };
+            triangleAngleFinder(10.0, 2.0, 1.0, angles);
+            Assert::IsTrue(
+                std::isnan(angles[0]) ||
+                std::isnan(angles[1]) ||
+                std::isnan(angles[2]) ||
+                std::abs((angles[0] + angles[1] + angles[2]) - 180.0) > 0.01
+            );
+        }
+
+        TEST_METHOD(TestInvalidInequalityAnglesSide2)
+        {
+            // Sides 1, 20, and 10 cannot make a valid triangle
+            double angles[3] = { 0.0, 0.0, 0.0 };
+            triangleAngleFinder(1.0, 20.0, 10.0, angles);
             Assert::IsTrue(
                 std::isnan(angles[0]) ||
                 std::isnan(angles[1]) ||
@@ -282,11 +308,67 @@ namespace TestTriangleFunction
             );
         }
 
-        TEST_METHOD(TestNegativeSideAngles)
+        TEST_METHOD(TestZeroSide2Angles)
+        {
+            // A zero side should not produce valid triangle angles
+            double angles[3] = { 0.0, 0.0, 0.0 };
+            triangleAngleFinder(3.0, 0.0, 5.0, angles);
+            Assert::IsTrue(
+                std::isnan(angles[0]) ||
+                std::isnan(angles[1]) ||
+                std::isnan(angles[2]) ||
+                std::isinf(angles[0]) ||
+                std::isinf(angles[1]) ||
+                std::isinf(angles[2])
+            );
+        }
+
+        TEST_METHOD(TestZeroSide3Angles)
+        {
+            // A zero side should not produce valid triangle angles
+            double angles[3] = { 0.0, 0.0, 0.0 };
+            triangleAngleFinder(3.0, 4.0, 0.0, angles);
+            Assert::IsTrue(
+                std::isnan(angles[0]) ||
+                std::isnan(angles[1]) ||
+                std::isnan(angles[2]) ||
+                std::isinf(angles[0]) ||
+                std::isinf(angles[1]) ||
+                std::isinf(angles[2])
+            );
+        }
+
+        TEST_METHOD(TestNegativeSide1Angles)
         {
             // A negative side should not produce valid triangle angles
             double angles[3] = { 0.0, 0.0, 0.0 };
             triangleAngleFinder(-10.0, 2.0, 3.0, angles);
+            Assert::IsTrue(
+                std::isnan(angles[0]) ||
+                std::isnan(angles[1]) ||
+                std::isnan(angles[2]) ||
+                std::abs((angles[0] + angles[1] + angles[2]) - 180.0) > 0.01
+            );
+        }
+        
+        TEST_METHOD(TestNegativeSide2Angles)
+        {
+            // A negative side should not produce valid triangle angles
+            double angles[3] = { 0.0, 0.0, 0.0 };
+            triangleAngleFinder(10.0, -2.0, 3.0, angles);
+            Assert::IsTrue(
+                std::isnan(angles[0]) ||
+                std::isnan(angles[1]) ||
+                std::isnan(angles[2]) ||
+                std::abs((angles[0] + angles[1] + angles[2]) - 180.0) > 0.01
+            );
+        }
+        
+        TEST_METHOD(TestNegativeSide3Angles)
+        {
+            // A negative side should not produce valid triangle angles
+            double angles[3] = { 0.0, 0.0, 0.0 };
+            triangleAngleFinder(10.0, 2.0, -3.0, angles);
             Assert::IsTrue(
                 std::isnan(angles[0]) ||
                 std::isnan(angles[1]) ||
