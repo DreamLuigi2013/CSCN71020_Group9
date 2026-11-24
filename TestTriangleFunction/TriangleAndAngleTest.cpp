@@ -293,7 +293,7 @@ namespace TestTriangleFunction
             );
         }
 
-        TEST_METHOD(TestZeroSideAngles)
+        TEST_METHOD(TestZeroSide1Angles)
         {
             // A zero side should not produce valid triangle angles
             double angles[3] = { 0.0, 0.0, 0.0 };
