@@ -45,7 +45,8 @@ double* pointsCoordinates(double* points) {
 #define SIZE_OF_POINT 2
 
 double* pointsCoordinates(double* points) {
-	double point = 0;
+	double x_val = 0;
+	double y_val = 0;
 	int invalidChar;
 
 	for (int r = 0; r < 4; r++) {
@@ -57,7 +58,7 @@ double* pointsCoordinates(double* points) {
 			valid = false;
 
 			printf("Please enter your x coordinate for point %d: ", r + 1);
-			scanf_val = scanf_s("%lf", &point);
+			scanf_val = scanf_s("%lf", &x_val);
 
 			if (scanf_val != 1) {
 				printf("Error! Invalid Input! Input must be a nunumber. Please try again.\n\n");
@@ -70,14 +71,14 @@ double* pointsCoordinates(double* points) {
 			valid = true;
 		} while (!valid);
 
-		points[(r * SIZE_OF_POINT) + X_OFFSET] = point;
+		points[(r * SIZE_OF_POINT) + X_OFFSET] = x_val;
 		
 		// Y VALUE
 		do {
 			valid = false;
 
 			printf("Please enter your y coordinate for point %d: ", r + 1);
-			scanf_val = scanf_s("%lf", &point);
+			scanf_val = scanf_s("%lf", &y_val);
 
 			if (scanf_val != 1) {
 				printf("Error! Invalid Input! Input must be a nunumber. Please try again.\n\n");
@@ -90,7 +91,7 @@ double* pointsCoordinates(double* points) {
 			valid = true;
 		} while (!valid);
 
-		points[(r * SIZE_OF_POINT) + Y_OFFSET] = point;
+		points[(r * SIZE_OF_POINT) + Y_OFFSET] = y_val;
 			
 	}
 	return points;
