@@ -112,10 +112,15 @@ void quadrilateralMenuAction() {
 	// Displays the filled rectangle point array
 	int X = 0;
 	int Y = 1;
+	int SIZE_OF_POINT = 2;
 
 	printf("\n{\n");
 	for (int point = 0; point < 4; point++) {
-		printf("    {%.2lf, %.2lf}%s\n", rectanglePoints[point * 2 + X], rectanglePoints[point * 2 + Y], (point != 3) ? ", " : "");
+		double rectPointX = rectanglePoints[point * SIZE_OF_POINT + X];
+		double rectPointY = rectanglePoints[point * SIZE_OF_POINT + Y];
+		char* possibleComma = (point != 3) ? ", " : "";
+
+		printf("    {%.2lf, %.2lf}%s\n", rectPointX, rectPointY, possibleComma);
 	}
 	printf("}\n");
 	// TEMP ======================
