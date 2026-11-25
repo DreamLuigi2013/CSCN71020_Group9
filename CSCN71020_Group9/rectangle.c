@@ -38,3 +38,61 @@ double* pointsCoordinates(double* points) {
 
 	return points;
 }
+
+/*
+#define X_OFFSET 0
+#define Y_OFFSET 1
+#define SIZE_OF_POINT 2
+
+double* pointsCoordinates(double* points) {
+	double point = 0;
+	int invalidChar;
+
+	for (int r = 0; r < 4; r++) {
+		bool valid;
+		int scanf_val;
+
+		// X VALUE
+		do {
+			valid = false;
+
+			printf("Please enter your x coordinate for point %d: ", r + 1);
+			scanf_val = scanf_s("%lf", &point);
+
+			if (scanf_val != 1) {
+				printf("Error! Invalid Input! Input must be a nunumber. Please try again.\n\n");
+
+				while ((invalidChar = getchar()) != '\n' && invalidChar != EOF);
+				continue;
+			}
+			printf("\n");
+
+			valid = true;
+		} while (!valid);
+
+		points[(r * SIZE_OF_POINT) + X_OFFSET] = point;
+		
+		// Y VALUE
+		do {
+			valid = false;
+
+			printf("Please enter your y coordinate for point %d: ", r + 1);
+			scanf_val = scanf_s("%lf", &point);
+
+			if (scanf_val != 1) {
+				printf("Error! Invalid Input! Input must be a nunumber. Please try again.\n\n");
+
+				while ((invalidChar = getchar()) != '\n' && invalidChar != EOF);
+				continue;
+			}
+			printf("\n");
+
+			valid = true;
+		} while (!valid);
+
+		points[(r * SIZE_OF_POINT) + Y_OFFSET] = point;
+			
+	}
+	return points;
+}
+*/
