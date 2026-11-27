@@ -21,7 +21,10 @@
   <ItemGroup>
     <ClCompile Include="main.c" />
     <ClCompile Include="rectangle.c" />
-    <ClCompile Include="RectangleSolver.c" />
+    <ClCompile Include="rectangleSolver2.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="rectangleSolver3.c" />
     <ClCompile Include="triangle.c" />
     <ClCompile Include="triangleSolver.c" />
   </ItemGroup>
