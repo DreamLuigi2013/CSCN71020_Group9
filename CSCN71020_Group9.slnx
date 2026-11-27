@@ -4,5 +4,6 @@
     <Platform Name="x86" />
   </Configurations>
   <Project Path="CSCN71020_Group9/CSCN71020_Group9.vcxproj" Id="1d89a798-f38b-4381-9544-24e58b926276" />
+  <Project Path="Rectangle Test/Rectangle Test.vcxproj" />
   <Project Path="TestTriangleFunction/TestTriangleFunction.vcxproj" />
 </Solution>
