@@ -1,79 +1,93 @@
-#define _USE_MATH_DEFINES
-
 #include <stdio.h>
-#include <stdbool.h>
 #include <math.h>
 
-#include "rectangleSolver.h"
 
-#define SIDE_LEN_1 0
-#define SIDE_LEN_2 1
-#define SIDE_LEN_3 2
+void findTriangleLengthsFromRectanglePoints(double points[4][2])
+{
 
-double* findTriangleLengthsFromRectanglePoints(double* points) {
-	static double triangleSideLengthsArr[6] = { 0 };
+	double Triangle1[3];
+	double Triangle2[3];
+	double Triangle3[3];
 
-	if (points == NULL) {
-		return triangleSideLengthsArr;
+	//This finds AB, BC, CA
+	for (int i = 0; i < 3;i++)
+	{
+		int nextPoint = (i + 1) % 3;
+		int x1, x2, y1, y2;
+
+		x1 = points[i][0];
+		y1 = points[i][1];
+		printf("test x1 = %d \n", x1);
+		printf("test y1 = %d \n", y1);
+
+		x2 = points[nextPoint][0];
+		y2 = points[nextPoint][1];
+		printf("test x2 = %d \n", x2);
+		printf("test y2 = %d \n", y2);
+
+
+
+		Triangle1[i] = sqrt((pow((x2 - x1), 2) + pow((y2 - y1), 2)));
+		printf("%f \n", Triangle1[i]);
+
 	}
+	printf("This is triangle 1\n\n");
 
-	// Calculate side lengths for two triangles formed by the 4 points (x1,y1)..(x4,y4)
-	double x1 = points[0], y1 = points[1];
-	double x2 = points[2], y2 = points[3];
-	double x3 = points[4], y3 = points[5];
-	double x4 = points[6], y4 = points[7];
+	//This finds AB, BC, CA
+	for (int i = 0; i < 3;i++)
+	{
+		int order[] = { 0, 1, 3, 0 };
 
-	// Triangle 1: P1, P2, P3
-	triangleSideLengthsArr[0] = hypot(x2 - x1, y2 - y1);
-	triangleSideLengthsArr[1] = hypot(x3 - x2, y3 - y2);
-	triangleSideLengthsArr[2] = hypot(x3 - x1, y3 - y1);
+		int currentPoint = order[i]; // 0 > 1 > 3 > 0
+		int nextPoint = order[i + 1]; // 1 > 3 > 0 > 0
+		int x1, x2, y1, y2;
 
-	// Triangle 2: P1, P3, P4
-	triangleSideLengthsArr[3] = hypot(x3 - x1, y3 - y1);
-	triangleSideLengthsArr[4] = hypot(x4 - x3, y4 - y3);
-	triangleSideLengthsArr[5] = hypot(x4 - x1, y4 - y1);
+		x1 = points[currentPoint][0];
+		y1 = points[currentPoint][1];
+		printf("test x1 = %d \n", x1);
+		printf("test y1 = %d \n", y1);
 
-	return triangleSideLengthsArr;
-}
 
-double findHypotenuse(double s1, double s2, double s3) {
-	double max = s1;
+		x2 = points[nextPoint][0];
+		y2 = points[nextPoint][1];
+		printf("test x2 = %d \n", x2);
+		printf("test y2 = %d \n", y2);
 
-	if (s2 > max) {
-		max = s2;
+
+
+		Triangle2[i] = sqrt((pow((x2 - x1), 2) + pow((y2 - y1), 2)));
+		printf("%f \n", Triangle2[i]);
+
 	}
-	if (s3 > max) {
-		max = s3;
+	printf("This is triangle 2\n\n");
+
+
+	for (int i = 0; i < 3;i++)
+	{
+		int order[] = { 0, 2, 3, 0 };
+
+		int currentPoint = order[i]; // 0 > 2 > 3 > 0
+		int nextPoint = order[i + 1]; // 2 > 3 > 0 > 0
+		int x1, x2, y1, y2;
+
+		x1 = points[currentPoint][0];
+		y1 = points[currentPoint][1];
+		printf("test x1 = %d \n", x1);
+		printf("test y1 = %d \n", y1);
+
+
+		x2 = points[nextPoint][0];
+		y2 = points[nextPoint][1];
+		printf("test x2 = %d \n", x2);
+		printf("test y2 = %d \n", y2);
+
+
+
+		Triangle3[i] = sqrt((pow((x2 - x1), 2) + pow((y2 - y1), 2)));
+		printf("%f \n", Triangle3[i]);
+
 	}
+	printf("This is triangle 3\n\n");
 
-	return max;
-}
-
-bool isARectangle(double* rectangleTriangleSideLengths) {
-	if (rectangleTriangleSideLengths == NULL) {
-		return false;
-	}
-
-	const double epsilon = 0.01;
-	int validTriangles = 0;
-
-	for (int tri = 0; tri < 2; tri++) {
-		double s1 = rectangleTriangleSideLengths[tri * 3 + SIDE_LEN_1];
-		double s2 = rectangleTriangleSideLengths[tri * 3 + SIDE_LEN_2];
-		double s3 = rectangleTriangleSideLengths[tri * 3 + SIDE_LEN_3];
-
-		if (s1 <= 0.0 || s2 <= 0.0 || s3 <= 0.0) {
-			return false;
-		}
-
-		double hypo = findHypotenuse(s1, s2, s3);
-		double sumOfSquares = (s1 * s1) + (s2 * s2) + (s3 * s3);
-		double legsSquaredSum = sumOfSquares - (hypo * hypo);
-
-		if (fabs(legsSquaredSum - (hypo * hypo)) <= epsilon) {
-			validTriangles++;
-		}
-	}
-
-	return validTriangles == 2;
+	return 0;
 }

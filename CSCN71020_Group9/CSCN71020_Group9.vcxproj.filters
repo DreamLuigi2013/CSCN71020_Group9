@@ -30,7 +30,7 @@
     <ClCompile Include="triangle.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="rectangleSolver.c">
+    <ClCompile Include="RectangleSolver.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
